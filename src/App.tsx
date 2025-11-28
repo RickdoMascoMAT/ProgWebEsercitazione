@@ -1,14 +1,14 @@
 import {Hello} from "./components/Hello.tsx";
 import {Counter} from "./components/Contatore.tsx";
-import {ToggleMessaggio} from "./components/ToggleMessaggio.tsx";
+import {ToggleMsg} from "./components/ToggleMsg.tsx";
 import {Timer} from "./components/Timer.tsx";
 
-
-function App() {
 
 function Messaggio(){
     return <h2>Welcome in React!</h2>
 }
+
+function App() {
 
   return (
     <>
@@ -19,7 +19,9 @@ function Messaggio(){
           <hr/>
           <Counter/>
           <hr/>
-          <ToggleMessaggio/>
+          <ToggleMsg>Test</ToggleMsg>
+          <hr/>
+          <ToggleMsg/>
           <hr/>
           <Timer/>
       </div>
