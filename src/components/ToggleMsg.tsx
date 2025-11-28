@@ -1,4 +1,5 @@
 import {type JSX, useState} from "react";
+import {Button} from "./Button.tsx";
 
 type Props = {
     children?: React.ReactNode;
@@ -7,43 +8,30 @@ type Props = {
 /**
  * ToggleMsg
  *
- * React Component that show or hide the content of passed as a children.
+ * React component that shows or hides the content passed as `children`.
  *
  * Use:
- * <ToggleMsg>Txt to show</ToggleMsg>
+ * <ToggleMsg>Text to show</ToggleMsg>
  *
  * Props:
- * - children?: React.ReactNode - content to show/hide (string, node JSX, ecc.)
+ * - `children?: React.ReactNode` - content to show/hide.
  *
  * Behaviour:
- * - Show the content when the content of `visibility` = true (default).
- * - Press the button to alternate the visibility (Hide / Show).
+ * - Visibility is initialized to `true` if `children` is present, `false` otherwise.
+ * - Renders the provided `children` when visible, or a warning message when no children are provided.
+ * - Uses `Button` (props: `label: string`, `onClick: () => void`) to toggle visibility. Button labels are `"Hide"` and `"Show"`.
  *
- * Return:
- * - ReactElement that contain the conditional paragraph and the toggle button.
+ * @returns  {JSX.Element}
  */
 
 export function ToggleMsg({children}:Props):JSX.Element{
-    const[visibility,setVisibility] = useState(!!children);
+    const[visibility,setVisibility] = useState<boolean>(!!children);
     const WARNING_MSG = 'WARNING: "No String inserted in the input"';
 
-    if(children) {
-        return (
-            <div>
-                {visibility && <p>{children}</p>}
-                <button onClick={() => setVisibility(!visibility)}>
-                    {visibility ? "Hide" : "Show"}
-                </button>
-            </div>
-        );
-    } else {
-        return (
-            <div>
-                {visibility && <p>{WARNING_MSG}</p>}
-                <button onClick={() => setVisibility(!visibility)}>
-                    {visibility ? "Hide" : "Show"}
-                </button>
-            </div>
-        );
-    }
+    return (
+        <div>
+            {visibility && <p>{children ?? WARNING_MSG}</p>}
+            <Button onClick={() => setVisibility(v => !v)} label={visibility ? "Hide" : "Show"}/>
+        </div>
+    );
 }

@@ -1,5 +1,7 @@
+import type { ReactElement } from "react";
+
 interface Props {
-    nome: string;
+    name: string;
 }
 
 /**
@@ -8,15 +10,25 @@ interface Props {
  * Functional React component that renders a simple greeting message.
  *
  * Props:
- * - nome: string — the name to display inside the greeting.
+ * - name: string — the name to display inside the greeting.
  *
  * Usage:
- * <Hello nome="WebProgramming Class" />
+ * <Hello name="WebProgramming Class" />
  *
- * Returns:
- * - JSX.Element containing a paragraph with the greeting "Hello, {nome}!".
+ * @param {{name: string}} props - Component props containing the `name` to display.
+ * @returns {ReactElement} A paragraph element with the greeting message.
  */
+export function Hello({name}: Props): ReactElement{
+    return <p>Hello, {name}!</p>
+}
 
-export function Hello({nome}: Props){
-    return <p>Hello, {nome}!</p>
+/**
+ * Messaggio
+ *
+ * Small presentational component that renders a welcome heading.
+ *
+ * @returns {ReactElement} An <h2> element with a welcome message.
+ */
+export function Messaggio(): ReactElement{
+    return <h2>Welcome in React!</h2>
 }

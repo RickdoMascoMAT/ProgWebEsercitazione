@@ -1,4 +1,6 @@
+import type { ReactElement } from "react";
 import {useState} from "react";
+import {Button} from "./Button.tsx";
 
 /**
  * Counter
@@ -12,17 +14,16 @@ import {useState} from "react";
  * - Maintains internal `counter` state (number) initialized to 0.
  * - Renders the current value and an "Increase" button that increments the counter by 1.
  *
- * Returns:
- * - JSX.Element containing a paragraph with the current value and an increment button.
+ * @return ReactElement containing a paragraph with the current value and an increment button.
  */
 
-export function Counter(){
-    const[counter, setCounter] = useState(0);
+export function Counter(): ReactElement{
+    const[counter, setCounter] = useState<number>(0);
 
     return(
         <div>
             <p>Value: {counter}</p>
-            <button onClick={()=>setCounter(counter+1)}>Increase</button>
+            <Button onClick={()=>setCounter(c => c+1)} label={"Increase"}/>
         </div>
     );
 }
