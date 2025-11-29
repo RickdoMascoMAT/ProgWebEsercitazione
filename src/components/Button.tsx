@@ -11,11 +11,11 @@ interface Props {
  * Functional React component that renders a native HTML button.
  *
  * Props:
- * - `label`: string — the visible text shown inside the button.
- * - `onClick`: () => void — callback executed when the user clicks the button.
+ * - `label: string` — visible text shown inside the button.
+ * - `onClick: () => void` — callback executed when the user clicks the button.
  *
- * @param {{label: string, onClick: () => void}} props
- * @returns {ReactElement} A native HTML button.
+ * @param {Props} props - Component props typed by TypeScript.
+ * @returns {ReactElement} A native HTML button element.
  */
 
 export function Button({label, onClick}: Props): ReactElement{

@@ -9,19 +9,20 @@ import { Counter } from "./Counter.tsx";
  * Functional React component that renders a simple student panel UI.
  *
  * Behavior:
- * - Maintains internal `studentName` state (string) initialized to an empty string.
+ * - Maintains internal `studentName` state (`string`) initialized to an empty string.
  * - Renders an input to update the student name, a `Hello` component with the current name,
  *   and a `Counter` component.
  *
  * Dependencies:
- * - `Hello(name: string)` — displays the student name.
- * - `Counter()` — simple incrementing counter.
+ * - `Hello` — displays the student name (prop `name: string`).
+ * - `Counter` — simple incrementing counter.
  *
  * Props:
  * - None
  *
- * @returns {ReactElement} A container with a heading, input, Hello and Counter.
+ * @returns {ReactElement} A container with heading, input, `Hello` and `Counter`.
  */
+
 export function StudentPanel(): ReactElement {
     const [studentName, setStudentName] = useState<string>("");
 

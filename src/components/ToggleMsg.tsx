@@ -11,17 +11,18 @@ type Props = {
  * React component that shows or hides the content passed as `children`.
  *
  * Use:
- * <ToggleMsg>Text to show</ToggleMsg>
+ * - `<ToggleMsg>Text to show</ToggleMsg>`
  *
  * Props:
- * - `children?: React.ReactNode` - content to show/hide.
+ * - `children?: React.ReactNode` — content to show/hide.
  *
  * Behaviour:
- * - Visibility is initialized to `true` if `children` is present, `false` otherwise.
- * - Renders the provided `children` when visible, or a warning message when no children are provided.
- * - Uses `Button` (props: `label: string`, `onClick: () => void`) to toggle visibility. Button labels are `"Hide"` and `"Show"`.
+ * - Visibility is initialized to `true` if `children` is truthy, `false` otherwise.
+ * - When visible, renders the provided `children`; when not visible, nothing is shown.
+ * - If `children` is absent, a generic warning message is displayed instead of the children when visible.
+ * - Uses `Button` (props: `label: string`, `onClick: () => void`) to toggle visibility. Button labels are `Hide` and `Show`.
  *
- * @returns  {JSX.Element}
+ * @returns {JSX.Element} Container with optional message and toggle button.
  */
 
 export function ToggleMsg({children}:Props):JSX.Element{

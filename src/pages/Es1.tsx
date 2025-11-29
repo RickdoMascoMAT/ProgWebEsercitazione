@@ -1,4 +1,4 @@
-import {Hello, Messaggio} from "../components/Hello.tsx";
+import {Hello, Msg} from "../components/Hello.tsx";
 import {Counter} from "../components/Counter.tsx";
 import {ToggleMsg} from "../components/ToggleMsg.tsx";
 import {Timer} from "../components/Timer.tsx";
@@ -6,7 +6,7 @@ import {Timer} from "../components/Timer.tsx";
 export default function Es1() {
     return (
         <div>
-            <Messaggio/>
+            <Msg/>
             <hr/>
             <Hello name={"WebProgramming Class"}/>
             <hr/>
