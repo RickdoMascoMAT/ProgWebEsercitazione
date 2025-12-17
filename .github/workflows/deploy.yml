@@ -1,31 +1,44 @@
-name: Deploy to GitHub Pages
+  name: Deploy to GitHub Pages
 
-on:
-  push:
-    branches:
-      - main
+  on:
+    push:
+      branches:
+        - main
 
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  permissions:
+    contents: write
+    pages: write
+    id-token: write
 
-      - name: Use Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
+  jobs:
+    build-and-deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+            persist-credentials: true
 
-      - name: Install dependencies
-        run: npm ci
+        - name: Use Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: '18'
 
-      - name: Build
-        run: npm run build
+        - name: Install dependencies
+          run: npm ci
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          publish_dir: ./build    # cambiare in ./dist per Vite
-          publish_branch: gh-pages
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        - name: Build
+          run: npm run build
+
+        - name: Configure git (optional)
+          run: |
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+
+        - name: Deploy to gh-pages
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            publish_dir: ./build
+            publish_branch: gh-pages
+            github_token: ${{ secrets.GITHUB_TOKEN }}
