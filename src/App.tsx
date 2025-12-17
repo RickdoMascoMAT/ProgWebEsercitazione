@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/ProgWebEsercitazione">
           <nav>
               <Link to='/Es1'>Es1</Link> | <Link to='/Es1EsFinal'>Es1EsFinal</Link>
               <hr/>
@@ -20,7 +20,7 @@ function App() {
 
           <Routes>
               <Route path="*" element={<NotFound/>} />
-              <Route path='/*' element={<Home/>}></Route>
+              <Route path='/' element={<Home/>}></Route>
               <Route path='/Home' element={<Home/>}></Route>
               <Route path='/Es1' element={<Es1/>}></Route>
               <Route path='/Es1EsFinal' element={<Es1EsFinal/>}></Route>
